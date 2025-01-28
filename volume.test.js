@@ -20,4 +20,8 @@ describe('Add volumes...', () => {
         expect(new Volume(1, TEASPOON).add(new Volume(1, TEASPOON)).equals(new Volume(2, TEASPOON))).toBe(true);
     })
 
+    test('Add a teaspoon and a tablespoon ', () => {
+        expect(new Volume(1, TEASPOON).add(new Volume(1, TABLESPOON)).equals(new Volume(4, TEASPOON))).toBe(true);
+    })
+
 })
