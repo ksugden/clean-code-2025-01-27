@@ -19,9 +19,12 @@ describe('Add volumes...', () => {
     test('Add two teaspoons', () => {
         expect(new Volume(1, TEASPOON).add(new Volume(1, TEASPOON)).equals(new Volume(2, TEASPOON))).toBe(true);
     })
-
     test('Add a teaspoon and a tablespoon ', () => {
         expect(new Volume(1, TEASPOON).add(new Volume(1, TABLESPOON)).equals(new Volume(4, TEASPOON))).toBe(true);
     })
+    test('Add two base units', () => {
+        expect(new Volume(1).add(new Volume(1)).equals(new Volume(2))).toBe(true);
+    })
+
 
 })
