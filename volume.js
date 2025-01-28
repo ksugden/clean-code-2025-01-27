@@ -10,6 +10,6 @@ export class Volume{
 }
 
 
-export const TEASPOON = new Volume(1, new Volume())
+export const TEASPOON = new Volume(1)
 export const TABLESPOON = new Volume(3, TEASPOON)
 export const OZ = new Volume(2, TABLESPOON)
