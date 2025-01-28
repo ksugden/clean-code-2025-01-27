@@ -1,11 +1,11 @@
 export class Volume{
     constructor(quantity, volumeBaseUnit) {
         this.quantity = quantity
-        this.unit = volumeBaseUnit
+        this.volumeBaseunit = volumeBaseUnit
     }
 
     equals(other){
-        return this.quantity == other.quantity && this.unit == other.unit;
+        return this.quantity == other.quantity && this.volumeBaseunit == other.unit;
     }
 }
 
