@@ -5,7 +5,7 @@ export class Volume{
     }
 
     equals(other){
-        return this.quantity == other.quantity && this.volumeBaseunit == other.unit;
+        return this.quantity == other.quantity && this.volumeBaseunit == other.volumeBaseunit;
     }
 }
 
