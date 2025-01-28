@@ -4,7 +4,7 @@ export class Volume{
         this.volumeUnit = volumeUnit
     }
 
-    countBaseUnits(){
+    toBaseUnit(){
         let baseUnitCount = this.quantity
         let volumeUnit = this.volumeUnit
 
@@ -12,16 +12,16 @@ export class Volume{
             baseUnitCount = baseUnitCount * volumeUnit.quantity
             volumeUnit = volumeUnit.volumeUnit
         }
-        return baseUnitCount
+        return new Volume(baseUnitCount, new Volume(1))
     }
     
     equals(other){
-        return this.countBaseUnits() == other.countBaseUnits()
+        return this.toBaseUnit().quantity == other.toBaseUnit().quantity
     }
 
     add(other){
-        const addition = other.countBaseUnits() + this.countBaseUnits()
-        return new Volume(addition, TEASPOON)
+        const addition = other.toBaseUnit().quantity + this.toBaseUnit().quantity
+        return new Volume(addition, new Volume(1))
     }
 }
 
