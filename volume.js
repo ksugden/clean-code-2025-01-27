@@ -20,12 +20,6 @@ export class Volume{
     }
 }
 
-
-
 export const TEASPOON = new Volume(1)
 export const TABLESPOON = new Volume(3, TEASPOON)
 export const OZ = new Volume(2, TABLESPOON)
-
-// Volume(2, Volume(3, TEASPOONS)) = 3 TEASPOONS x 2 = (v1.quantity * v2.quantity , v2.unit)
-
-// Volume(2, Volume(4, Volume(5, Volume(1)))) = 2 * 4 * 5 * TEASPOONS
