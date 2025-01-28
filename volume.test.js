@@ -1,8 +1,14 @@
 import {Volume, TEASPOON, TABLESPOON, OZ} from "./volume";
 
-describe('Test volumes are equal...', () => {
+describe('Test equating volumes...', () => {
     test('two equal volumes of the same unit are equal', () => {
         expect(new Volume(1, TEASPOON).equals(new Volume(1, TEASPOON))).toBe(true);
+    })
+    test('two inequal volumes of the same unit are not equal', () => {
+        expect(new Volume(1, TEASPOON).equals(new Volume(2, TEASPOON))).toBe(false);
+    })
+    test('two inequal volumes of different unit are not equal', () => {
+        expect(new Volume(1, TEASPOON).equals(new Volume(1, TABLESPOON))).toBe(false);
     })
     test('two equal volumes of different unit are equal', () => {
         expect(new Volume(1, TABLESPOON).equals(new Volume(3, TEASPOON))).toBe(true);
@@ -15,7 +21,7 @@ describe('Test volumes are equal...', () => {
     })
 })
 
-describe('Add volumes...', () => {
+describe('Test adding volumes...', () => {
     test('Add two teaspoons', () => {
         expect(new Volume(1, TEASPOON).add(new Volume(1, TEASPOON)).equals(new Volume(2, TEASPOON))).toBe(true);
     })
@@ -25,6 +31,4 @@ describe('Add volumes...', () => {
     test('Add two base units', () => {
         expect(new Volume(1).add(new Volume(1)).equals(new Volume(2))).toBe(true);
     })
-
-
 })
