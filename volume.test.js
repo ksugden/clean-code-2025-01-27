@@ -19,13 +19,19 @@ describe('Test equating volumes...', () => {
     test('3 oz and 6 tablespoons are equal', () => {
         expect(new Volume(3, OZ).equals(new Volume(6, TABLESPOON))).toBe(true);
     })
+    test('A teaspoon is the base unit', () => {
+        expect(new Volume(1, TEASPOON).equals(new Volume(1))).toBe(true);
+    })
+    test('A fraction tablespoon equals a teaspoon', () => {
+        expect(new Volume(1/3, TABLESPOON).equals(new Volume(1, TEASPOON))).toBe(true);
+    })
 })
 
 describe('Test adding volumes...', () => {
     test('Add two teaspoons', () => {
         expect(new Volume(1, TEASPOON).add(new Volume(1, TEASPOON)).equals(new Volume(2, TEASPOON))).toBe(true);
     })
-    test('Add a teaspoon and a tablespoon ', () => {
+    test('Add a teaspoon and a tablespoon', () => {
         expect(new Volume(1, TEASPOON).add(new Volume(1, TABLESPOON)).equals(new Volume(4, TEASPOON))).toBe(true);
     })
     test('Add two base units', () => {
