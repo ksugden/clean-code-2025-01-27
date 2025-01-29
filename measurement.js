@@ -1,7 +1,10 @@
+import Type from "./measurementType"
+
 export class Measurement{
-    constructor(quantity, MeasurementUnit) {
+    constructor(quantity, MeasurementUnit, type) {
         this.quantity = quantity
         this.MeasurementUnit = MeasurementUnit
+        this.type = MeasurementUnit? MeasurementUnit.type : type
     }
 
     toBaseUnit(){
@@ -20,13 +23,18 @@ export class Measurement{
     }
 
     add(other){
-        const addition = other.toBaseUnit().quantity + this.toBaseUnit().quantity
-        return new Measurement(addition, new Measurement(1))
+        if (this.type == other.type){
+            const addition = other.toBaseUnit().quantity + this.toBaseUnit().quantity
+            return new Measurement(addition, new Measurement(1))
+        } else{
+            throw new TypeError('Cannot add these units');
+        }
+
     }
 }
 
-// MeasurementUnits
-export const TEASPOON = new Measurement(1)
+// VolumeUnits
+export const TEASPOON = new Measurement(1, null, Type.Volume)
 export const TABLESPOON = new Measurement(3, TEASPOON)
 export const OZ = new Measurement(2, TABLESPOON)
 export const CUP = new Measurement(8, OZ)
@@ -37,7 +45,7 @@ export const ANOTHER_GALLON = new Measurement(1, GALLON)
 export const ANOTHER_ANOTHER_GALLON = new Measurement(8, PINT)
 
 //LengthUnits
-export const INCH = new Measurement(1)
+export const INCH = new Measurement(1, null, Type.Length)
 export const FOOT = new Measurement(12, INCH)
 export const YARD = new Measurement(3, FOOT)
 export const FURLONG = new Measurement(220, YARD)

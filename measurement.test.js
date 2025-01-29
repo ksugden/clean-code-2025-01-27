@@ -1,4 +1,4 @@
-import {Measurement, TEASPOON, TABLESPOON, OZ} from "./measurement";
+import {Measurement, TEASPOON, TABLESPOON, OZ, QUART, FURLONG} from "./measurement";
 
 describe('Test equating Measurements...', () => {
     test('two equal Measurements of the same unit are equal', () => {
@@ -36,5 +36,8 @@ describe('Test adding Measurements...', () => {
     })
     test('Add two base units', () => {
         expect(new Measurement(1).add(new Measurement(1)).equals(new Measurement(2))).toBe(true);
+    })
+    test('Add a quart and a furlong', () => {
+        expect(() => {new Measurement(1, QUART).add(new Measurement(1, FURLONG));}).toThrow(TypeError);
     })
 })
