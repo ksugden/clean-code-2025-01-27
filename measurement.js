@@ -15,7 +15,7 @@ export class Measurement{
             baseUnitCount = baseUnitCount * MeasurementUnit.quantity
             MeasurementUnit = MeasurementUnit.MeasurementUnit
         }
-        return new Measurement(baseUnitCount, new Measurement(1))
+        return new Measurement(baseUnitCount, new Measurement(1, null, this.type))
     }
     
     equals(other){
